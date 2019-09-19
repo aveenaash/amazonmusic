@@ -38,5 +38,11 @@ public class ArtistController {
 		System.out.println("auth token : " + authToken);
 		return artistService.getArtistById(artistId);
 	}
+	
+	@RequestMapping(value ="/{id}/test", method = RequestMethod.GET)
+	public ArtistDto test(@PathVariable(value="id") Long artistId) {
+		System.out.println("artistId : " + artistId);
+		return artistService.getArtistById(artistId);
+	}
 
 }
