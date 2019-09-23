@@ -1,5 +1,7 @@
 package com.amazon.music.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,24 +27,13 @@ public class ArtistController {
 	}
 	
 	@RequestMapping(value="", method = RequestMethod.GET)
-	public ArtistDto getArtistById(@RequestParam(value="id", required = true) Long artistId,
-			@RequestParam(value = "name", required = false) String name) {
-		System.out.println("id : " + artistId + " , name : " + name);
+	public ArtistDto getArtistById(@RequestParam(value="id", required = true) Long artistId) {
 		return artistService.getArtistById(artistId);
 	}
 	
-	// http://localhost:8000/amazonmusic/artist/20/detail
-	@RequestMapping(value ="/{id}/detail", method = RequestMethod.GET)
-	public ArtistDto getArtistFromId(@PathVariable(value="id") Long artistId,
-			@RequestHeader(value="auth-token") String authToken) {
-		System.out.println("auth token : " + authToken);
-		return artistService.getArtistById(artistId);
-	}
-	
-	@RequestMapping(value ="/{id}/test", method = RequestMethod.GET)
-	public ArtistDto test(@PathVariable(value="id") Long artistId) {
-		System.out.println("artistId : " + artistId);
-		return artistService.getArtistById(artistId);
+	@RequestMapping(value="/name", method = RequestMethod.GET)
+	public List<ArtistDto> getArtistByName(@RequestParam(value="name", required = true) String name) {
+		return artistService.searchArtistsByName(name);
 	}
 
 }
