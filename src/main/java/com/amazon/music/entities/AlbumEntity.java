@@ -40,6 +40,8 @@ public class AlbumEntity {
 	private ArtistEntity artistEntity;
 	
 	
+	
+	
 	@PrePersist
 	public void onCreate() {
 		if(this.createdAt == null) {

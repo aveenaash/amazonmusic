@@ -4,17 +4,14 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.amazon.music.entities.AlbumEntity;
+import com.amazon.music.entities.SongEntity;
 
 @Repository
 @Transactional
-public class AlbumRepository extends AbstractRepository {
+public class SongRepository extends AbstractRepository {
 
-	public void save(AlbumEntity albumEntity) {
-		entityManager.persist(albumEntity);
-	}
-	
-	public AlbumEntity getById(Long id) {
-		return entityManager.find(AlbumEntity.class, id);
+	public void save(SongEntity songEntity) {
+		entityManager.persist(songEntity);
 	}
 	
 }
